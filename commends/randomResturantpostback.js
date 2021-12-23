@@ -3,7 +3,6 @@ import { dataMR } from '../data_schedule.js'
 // import fs from 'fs'
 
 export default function (event) {
-  // dataMRFilter filter 完畢資料
   const dataMRFilter = []
   if (event.postback.data === 'taipei') {
     for (let i = 0; i < dataMR.length; i++) {
@@ -11,19 +10,15 @@ export default function (event) {
         dataMRFilter.push(dataMR[i])
       }
     }
-    // console.log(dataMRFilter.length) // 176
-    // 隨機取0-176 亂數
     const temprandomTaipei = []
     let randomTaipei = 0
     for (let i = 0; i < 5; i++) {
       randomTaipei = Math.floor(Math.random() * dataMRFilter.length)
-      // console.log(randomTaipei)
       if (temprandomTaipei.indexOf(randomTaipei) === -1) {
         temprandomTaipei.push(randomTaipei)
       } else {
         i--
       }
-      // console.log(dataMR)
     }
     for (let i = 0; i < 5; i++) {
       const idx = temprandomTaipei[i]
@@ -38,8 +33,6 @@ export default function (event) {
       randomResturantpostback.contents.contents[i].body.contents[2].contents[0].text = `台北市${dataMRFilter[idx].address}`
       randomResturantpostback.contents.contents[i].footer.contents[1].action.uri = encodeURI(`https://www.google.com.tw/maps/search/?api=1&query=${dataMRFilter[idx].mapName}`)
     }
-
-    // console.log(randomTaipei)
   } else if (event.postback.data === 'taichung') {
     for (let i = 0; i < dataMR.length; i++) {
       if (dataMR[i].city === 'Taichung') {
@@ -61,7 +54,7 @@ export default function (event) {
     for (let i = 0; i < 5; i++) {
       const idx1 = temprandomTaichung[i]
       console.log(idx1)
-      randomResturantpostback.contents.contents[i].hero.url = dataMR[idx1].Image
+      randomResturantpostback.contents.contents[i].hero.url = dataMRFilter[idx1].Image
       // description
       randomResturantpostback.contents.contents[i].hero.action.text = `${dataMRFilter[idx1].storeName}：${dataMRFilter[idx1].description}`
       randomResturantpostback.contents.contents[i].body.contents[0].text = dataMRFilter[idx1].storeName
