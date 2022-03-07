@@ -1,10 +1,11 @@
-# 公開資源來自：https://guide.michelin.com/tw/zh_TW
+### 公開資源來自：
+https://guide.michelin.com/tw/zh_TW
 
-# 機器人ＩＤ：@488pghgt
+### 機器人 ID : @488pghgt
 
-# 使用方式如下
+### 使用方式如下
 
-## 使用 Richmenu 快速使用功能
+#### 使用 Richmenu 快速使用功能
 
 - 隨機
   可選擇台北或台中  
